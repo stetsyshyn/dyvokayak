@@ -1,5 +1,5 @@
 {
-  "name": "html",
+  "name": "dyvokayak",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "url": "https://github.com/stetsyshyn/dyvokayak.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node_modules/.bin/webpack --mode production"
   },
   "keywords": [],
   "author": "",
@@ -17,13 +17,15 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
     "bootstrap": "^4.4.1",
+    "file-loader": "^5.0.2",
     "jquery": "^3.4.1",
+    "node-sass": "^4.13.1",
     "popper.js": "^1.16.1",
+    "sass-loader": "^8.0.2",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
   },
-  "dependencies": {
-    "lodash": "^4.17.15"
-  }
+  "dependencies": {}
 }
