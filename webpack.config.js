@@ -2,10 +2,10 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/js/app.js",
+  entry: "./src",
   output: {
-    path: path.resolve(__dirname, "dist/assets"),
-    filename: "bundle.js"
+    path: path.resolve(__dirname, "dist"),
+    publickPath: "assets"
   },
   module: {
     rules: [

@@ -1,4 +1,6 @@
+import {hello} from './msg';
+
 const name = 'Nick';
 
-const hello = msg => `Hello ${name}`; 
+const hello = name => `${hello} ${name}`; 
 console.log(hello);
