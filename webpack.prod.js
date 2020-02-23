@@ -1,83 +1,49 @@
 const path = require("path");
+const common = require("./webpack.common");
+const merge = require("webpack-merge");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = {
+module.exports = merge(common, {
   mode: "production",
-  // context: path.resolve(__dirname, 'app'),
-  entry: "./src",
   output: {
     path: path.resolve(__dirname, "dist"),
-    publicPath: "assets",
-    filename: "[name].bundle.js"
+    filename: "[name]-[contentHash].bundle.js"
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      
-    })
+    new MiniCssExtractPlugin({
+      filename: "[name]-[contentHash].bundle.css"
+    }),
+
+    new CleanWebpackPlugin()
   ],
   optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()]
+    minimizer: [
+      new TerserPlugin(),
+      new HtmlWebpackPlugin({
+        template: "./src/template.html",
+        minify: {
+          collapseWhitespace: true,
+          removeComments: true,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          useShortDoctype: true,
+          removeAttributeQuotes: true
+        }
+      })
+    ]
   },
   module: {
     rules: [
-      // for js
-      {
-        test: /\.js$/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"]
-          }
-        }
-      },
-      // for assets
-      {
-        test: /\.(svg|png|jpg|gif)$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            name: "[name].[hash].[ext]",
-            outputPath: "img"
-          }
-        }
-      },
-      // html
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {}
-          }
-        ]
-      },
-      // for scss
       {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "style-loader"
-          },
-          {
-            loader: "file-loader",
-            options: {
-              name: "css/[name].css"
-            }
-          },
-          {
             loader: "css-loader"
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: function() {
-                return [require("autoprefixer")];
-              }
-            }
           },
           {
             loader: "sass-loader"
@@ -86,4 +52,4 @@ module.exports = {
       }
     ]
   }
-};
+});
