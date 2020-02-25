@@ -1,3 +1,16 @@
 body{
-  background: orange;
+  background: white;
+}
+.navbar{
+  .menu-nav-button{
+    border: none;
+    background: none;
+  }
+}
+
+// Cover slide
+.cover{
+  display: flex;
+  width: 100%;
+  background: url('../../images/cover_image.jpg');
 }

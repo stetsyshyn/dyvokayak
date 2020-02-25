@@ -8,11 +8,6 @@ module.exports = merge( common, {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js"
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/template.html"
-    })
-  ],
   module: {
     rules: [
       // for scss
@@ -26,7 +21,14 @@ module.exports = merge( common, {
             loader: "css-loader"
           },
           {
-            loader: "sass-loader"
+            loader: 'resolve-url-loader',
+          }
+          ,
+          {
+            loader: "sass-loader", 
+            options: {
+              sourceMap: true
+            }
           }
         ]
       }

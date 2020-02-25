@@ -1,6 +1,8 @@
-import {hello} from './msg';
+import "slick-carousel";
+import jQuery from "jquery";
 
-const name = 'Nick';
-
-const hello = name => `${hello} ${name}`; 
-console.log(hello);
+export const init = () => {
+  jQuery(function($) {
+    $(".main-slider").slick();
+  });
+};
