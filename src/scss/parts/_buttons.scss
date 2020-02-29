@@ -1,0 +1,12 @@
+.btn{
+  &-bordered{
+    border: 1px solid $black;
+    border-radius: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 50px;
+    &:hover{
+      background-color: $yellow;
+    }
+  }
+}
