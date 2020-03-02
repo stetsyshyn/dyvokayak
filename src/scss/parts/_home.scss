@@ -32,7 +32,7 @@ body {
       background: url("../../images/corporate.jpg") center/cover no-repeat;
     }
     .content {
-      padding: 30px;
+      padding: 40px;
       .title {
         font-size: 1.8rem;
         font-weight: bold;
@@ -119,12 +119,31 @@ body {
 }
 // Rental
 .rental-row {
-  margin: 30px 0;
+  margin: 30px 0 0;
+  background-color: $gray-bg;
   .rental {
-    padding: 30px;
-    background-color: $gray-bg;
+    padding: 30px 30px 50px;
+  }
+
+  .widget-tite {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .rental-items {
+    margin-bottom: 30px;
+    .item {
+      border: 1px solid $white;
+      height: 100%;
+      background: $white;
+      padding: 30px;
+      img {
+        max-width: 100%;
+      }
+    }
   }
 }
+
 // Footer
 .footer {
   padding: 70px 0;
