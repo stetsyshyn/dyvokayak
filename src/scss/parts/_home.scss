@@ -15,6 +15,20 @@ body {
 }
 .navbar {
   padding: 10px 0;
+  .navbar-brand {
+    align-items: center;
+    display: flex;
+    img {
+      margin-right: 15px;
+    }
+    .name {
+      font-weight: bold;
+    }
+  }
+  .phone {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
   .menu-nav-button {
     border: none;
     background: none;
@@ -44,12 +58,27 @@ body {
 
 // Cover slide
 .promo-cover {
+  position: relative;
   display: flex;
   width: 100%;
   height: 60vh;
   min-height: 350px;
   align-items: center;
   background: url("../../images/cover_image.jpg") center/cover no-repeat;
+  &:before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.4);
+    z-index: 10;
+  }
+  .container{
+    z-index: 50;
+  }
   .title {
     font-size: 4rem;
     font-weight: bold;
@@ -57,18 +86,29 @@ body {
   .sub-title {
     font-size: 2rem;
   }
+  
 }
 // Services
 .services {
   padding: 50px 0 20px;
-  .service {
-    margin: 0 0 50px;
-    // parent
-    & {
-      @include media-breakpoint-up(md) {
-        border-right: 1px solid $light-gray;
+  .col-12 {
+    padding: 0;
+    &:last-child {
+      .service {
+        border-right: none;
       }
     }
+  }
+  .service {
+    margin: 0 0 50px;
+    padding: 0 30px;
+    text-align: center;
+    @include media-breakpoint-up(md) {
+      border-right: 1px solid $light-gray;
+    }
+
+    // parent
+
     .title {
       font-size: 1.8rem;
       font-weight: bold;
@@ -78,6 +118,9 @@ body {
 }
 // Splav
 .splavy {
+  padding: 50px 0;
+  background-color: $gray-bg;
+  background: url("../../images/waves.svg") center top no-repeat;
   .splav {
     display: flex;
     flex-direction: column;
@@ -86,7 +129,7 @@ body {
     .cover {
       padding: 20px;
       flex: 1;
-      background: url(../../images/splav-1.jpg) center/cover no-repeat;
+      background: url("../../images/splav-1.jpg") center/cover no-repeat;
       min-height: 450px;
       .title {
         font-size: 1.8rem;
@@ -122,7 +165,7 @@ body {
   margin: 30px 0 0;
   background-color: $gray-bg;
   .rental {
-    padding: 30px 30px 50px;
+    padding: 30px 0 50px;
   }
 
   .widget-tite {
